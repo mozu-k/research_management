@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>研究用データベース</title>
+		<style>
+			table {
+  				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>文献編集</h1>
+		<div style="display:inline-flex">
+			<form action="/">
+				<input type="submit" value="トップへ" >
+			</form>
+			<form action="/literature">
+    			<input type="submit" value="文献トップへ" >
+   			</form>
+   		</div>
+		<br></br>
+		<p><font color="red" th:text="${message}"></font></p>
+		<p><font color="red" th:text="${message2}"></font></p>
+		<form method="post" action="/literature/edit" th:object="${literature}">
+		<input type="hidden" name="id" th:value="*{id}">
+			<table border = 1>
+				<tr>
+					<th class="col_id">ID</th>
+					<td class="col_data" th:text="*{id}"></td>
+					<td></td>
+				</tr>
+				<tr>
+    				<th>書籍名</th>
+      				<td><input type="text" th:field="*{title}" size="80" /></td>
+   					<td><font color="red" size="-1">※必須</font></td>
+  				</tr>
+  				<tr>
+    				<th>著者名</th>
+   					<td><input type="text" th:field="*{author}" size="80"/></td>
+   					<td><font color="red" size="-1">※必須</font></td>
+  				</tr>
+  				<tr>
+    				<th>出版社名</th>
+   					<td><input type="text" th:field="*{publisher}" size="80"/></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>発売日</th>
+   					<td><input type="text" th:field="*{release_date}" size="80" /></td>
+   					<td><font size="-1">0000-00-00</font></td>
+  				</tr>
+  				<tr>
+    				<th>ISBN</th>
+   					<td><input type="text" th:field="*{isbn}" size="80" /></td>
+   					<td></td>
+  				</tr>
+			</table>
+			<br>
+			<input type="submit" value="登録" >
+		</form>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>研究用データベース</title>
+		<style>
+			table {
+  				border-collapse: collapse;
+			}
+			.col_attribute {width: 80px;}
+		</style>
+	</head>
+	<body>
+		<h1>文献データベース</h1>
+		<div style="display:inline-flex">
+			<form action="/">
+				<input type="submit" value="トップへ" >
+			</form>
+			<form action="/literature">
+    			<input type="submit" value="文献トップへ" >
+   			</form>
+   		</div>
+		<br></br>
+		<table border=1>
+			<tr>
+				<th class="col_attribute">ID</th>
+				<td th:text="${litera.id}"></td>
+			</tr>
+			<tr>
+				<th>書籍名</th>
+				<td th:text="${litera.title}"></td>
+			</tr>
+			<tr>
+				<th>著者名</th>
+				<td th:text="${litera.author}"></td>
+			</tr>
+			<tr>
+				<th>出版社名</th>
+				<td th:text="${litera.publisher}"></td>
+			</tr>
+			<tr>
+				<th>発売日</th>
+				<td th:text="${litera.release_date}"></td>
+			</tr>
+			<tr>
+				<th>ISBN</th>
+				<td th:text="${litera.isbn}"></td>
+			</tr>
+		</table>
+		<br></br>
+		<div style="display:inline-flex">
+			<form method="get" action="/literature/edit">
+				<input type="submit" value="更新" >
+				<input type="hidden" th:name = "id" th:value="${litera.id}">
+			</form>
+			<form method="post" action="/literature/delete">
+    			<input type="submit" value="削除" >
+    			<input type="hidden" th:name = "id" th:value="${litera.id}">
+   			</form>
+   		</div>
+	</body>
+</html>

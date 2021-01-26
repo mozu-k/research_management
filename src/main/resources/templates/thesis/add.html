@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>研究用データベース</title>
+		<style>
+			table {
+  				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>論文新規登録</h1>
+		<div style="display:inline-flex">
+			<form action="/">
+				<input type="submit" value="トップへ" >
+			</form>
+			<form action="/thesis">
+    			<input type="submit" value="論文トップへ" >
+   			</form>
+   		</div>
+		<br></br>
+		<p><font color="red" th:text="${message}"></font></p>
+		<p><font color="red" th:text="${message2}"></font></p>
+		<form method="post" action="/thesis/add" th:object="${thesis}">
+			<table border = 1>
+				<tr>
+    				<th class="col_name">論文名(日本語)</th>
+      				<td class="col_data">
+   						<input type="text" th:field="*{titleJa}" size="80" />
+   					</td>
+   					<td><font size="-1" color="red">※どちらか必須</font></td>
+  				</tr>
+  				<tr>
+    				<th>論文名(英語)</th>
+   					<td><input type="text" th:field="*{titleEn}" size="80"/></td>
+   					<td><font size="-1" color="red">※どちらか必須</font></td>
+  				</tr>
+  				<tr>
+    				<th>著者名</th>
+   					<td><input type="text" th:field="*{author1}" size="80"/></td>
+   					<td><font size="-1" color="red">※必須</font></td>
+  				</tr>
+  				<tr>
+    				<th>著者名</th>
+   					<td><input type="text" th:field="*{author2}" size="80"/></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>著者名</th>
+   					<td><input type="text" th:field="*{author3}" size="80"/></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>著者名</th>
+   					<td><input type="text" th:field="*{author4}" size="80"/></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>著者名</th>
+   					<td><input type="text" th:field="*{author5}" size="80"/></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>著者名</th>
+   					<td><input type="text" th:field="*{author6}" size="80"/></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>概要</th>
+   					<td><input type="text" th:field="*{abs}" size="80"/></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>NII論文ID(NAID)</th>
+   					<td><input type="text" th:field="*{NAID}" size="80" /></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>NII書誌ID(NCID)</th>
+   					<td><input type="text" th:field="*{NCID}" size="80" /></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>ISSN</th>
+   					<td><input type="text" th:field="*{ISSN}" size="80" /></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>NDL記事登録ID</th>
+   					<td><input type="text" th:field="*{NDL_ID}" size="80" /></td>
+   					<td></td>
+  				</tr>
+  				<tr>
+    				<th>NDL請求記号</th>
+   					<td><input type="text" th:field="*{NDL_code}" size="80" /></td>
+   					<td></td>
+  				</tr>
+			</table>
+			<p>アップロードするPDFのパスを入力してください</p>
+			<input type="text" th:name="pdf_path" size="80" />
+			<br></br>
+			<input type="submit" value="登録" >
+		</form>
+	</body>
+</html>

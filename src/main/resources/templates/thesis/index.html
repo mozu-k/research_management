@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>研究用データベース</title>
+		<style>
+			table {
+  				border-collapse: collapse;
+			}
+			.col_id {width: 30px;}
+			.col_titleJa {width: 600px;}
+			.col_author1 {width: 100px;}
+			.col_author2 {width: 100px;}
+		</style>
+	</head>
+	<body>
+		<h1>論文データベース</h1>
+		<form action="/">
+			<input type="submit" value="トップへ" >
+		</form>
+		<br></br>
+		<table border=1>
+			<tr>
+				<th class="col_id">ID</th>
+				<th class="col_titleJa">論文名</th>
+				<th class="col_author1">著者名</th>
+				<th class="col_author2">著者名</th>
+				<th></th>
+			</tr>
+			<tr th:each="data: ${thesis}">
+    			<td th:text="${data.id}"></td>
+    			<td th:text="${data.titleJa}"></td>
+    			<td th:text="${data.author1}"></td>
+    			<td th:text="${data.author2}"></td>
+    			<form method="post" action="/thesis/detail">
+    				<td><input type="submit" value="詳細" ></td>
+    				<input type="hidden" th:name = "id" th:value="${data.id}">
+   				</form>
+  			</tr>
+		</table>
+		<br></br>
+		<form action="thesis/add">
+			<input type="submit" value="新規追加" >
+		</form>
+	</body>
+</html>
